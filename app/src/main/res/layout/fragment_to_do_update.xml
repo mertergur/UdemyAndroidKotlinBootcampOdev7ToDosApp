@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="toDoUpdateFragment"
+            type="com.example.todosapp.ui.fragment.ToDoUpdateFragment" />
+        <variable
+            name="toDoBundle"
+            type="com.example.todosapp.data.entity.ToDos" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.fragment.ToDoUpdateFragment">
+
+        <ImageView
+            android:id="@+id/imageViewUpdate"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="16dp"
+            android:onClick="@{() -> toDoUpdateFragment.buttonUpdate(toDoBundle.id, editTextToDoContentUpdate.getText().toString(),textViewDeadlineUpdate.getText().toString(), toDoBundle.done, imageViewUpdate)}"
+            android:src="@drawable/save_24"
+            app:tint="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            app:boxStrokeColor="@color/colorPrimary"
+            app:hintTextColor="@color/colorPrimaryDark"
+            app:cursorColor="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimary"
+            app:layout_constraintBottom_toTopOf="@+id/buttonDeadlineUpdate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewUpdate"
+            app:layout_constraintVertical_chainStyle="packed">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextToDoContentUpdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusedSearchResultHighlightColor="@color/colorPrimary"
+                android:hint="What will you do?"
+                android:text="@{toDoBundle.name}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textViewDeadlineUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/caveat_brush"
+            android:textColor="@color/colorPrimary"
+            android:text="@{toDoBundle.deadline}"
+            android:textSize="28sp"
+            app:layout_constraintBottom_toBottomOf="@+id/buttonDeadlineUpdate"
+            app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
+            app:layout_constraintTop_toTopOf="@+id/buttonDeadlineUpdate" />
+
+        <Button
+            android:id="@+id/buttonDeadlineUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:onClick="@{() -> toDoUpdateFragment.toDoUpdateButtonDatePicker()}"
+            android:text="Select Deadline"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/noteupdate" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

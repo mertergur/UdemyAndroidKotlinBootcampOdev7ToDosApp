@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_activity_nav"
+    app:startDestination="@id/toDoMainFragment">
+    <fragment
+        android:id="@+id/toDoMainFragment"
+        android:name="com.example.todosapp.ui.fragment.ToDoMainFragment"
+        android:label="fragment_to_do_main"
+        tools:layout="@layout/fragment_to_do_main" >
+        <action
+            android:id="@+id/toDoMain_to_toDoAdd"
+            app:destination="@id/toDoAddFragment" />
+        <action
+            android:id="@+id/toDoMain_to_toDoUpdate"
+            app:destination="@id/toDoUpdateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/toDoAddFragment"
+        android:name="com.example.todosapp.ui.fragment.ToDoAddFragment"
+        android:label="ToDoAddFragment"
+        tools:layout="@layout/fragment_to_do_add"
+        >
+        <action
+            android:id="@+id/toDoAddFragment_to_toDoMainFragment"
+            app:destination="@id/toDoMainFragment"
+            app:popUpTo="@id/toDoMainFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/toDoUpdateFragment"
+        android:name="com.example.todosapp.ui.fragment.ToDoUpdateFragment"
+        android:label="ToDoUpdateFragment"
+        tools:layout="@layout/fragment_to_do_update"
+        >
+        <argument
+            android:name="todo"
+            app:argType="com.example.todosapp.data.entity.ToDos" />
+        <action
+            android:id="@+id/toDoUpdateFragment_to_toDoMainFragment"
+            app:destination="@id/toDoMainFragment"
+            app:popUpTo="@id/toDoMainFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>
